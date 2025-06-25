@@ -1,0 +1,21 @@
+6. 📡 Webhook Spoof / Injection
+Target: Merchant that trusts incoming Stripe webhooks too easily
+Weapon: Fake webhook with a refund or charge event
+Method:
+
+
+POST /webhook HTTP/1.1
+Host: victim.com
+Stripe-Signature: [forged]
+{ "type": "charge.succeeded", ... }
+
+
+💀 System believes event is real and acts on it (gives goods, access, etc.)
+
+🛡️ Fix:
+
+Always verify signature
+
+Never trust incoming webhook blindly
+
+Use Stripe’s SDK verification methods
