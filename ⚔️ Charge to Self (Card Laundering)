@@ -1,0 +1,23 @@
+⚔️ Charge to Self (Card Laundering)
+Target: Stripe account connected to attacker’s bank
+Weapon: Stolen/compromised card
+Method:
+
+
+curl https://api.stripe.com/v1/charges \
+  -u sk_live_xxx: \
+  -d amount=4999 \
+  -d currency=usd \
+  -d source=tok_visa \
+  -d description="Consulting"
+
+
+💀 Funds arrive in Stripe → attacker cashes out
+
+🛡️ Fix:
+
+Radar rules
+
+Manual KYC before first payout
+
+Flag suspicious payout destinations
